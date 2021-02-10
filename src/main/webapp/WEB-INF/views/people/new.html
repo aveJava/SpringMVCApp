@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createPerson</title>
+</head>
+<body>
+<form method="POST" action="/people">
+    <label for="name">Имя: </label>
+    <input name="name" type="text" id="name" />
+
+    <br>
+
+    <label for="age">Возраст: </label>
+    <input name="age" type="text" id="age" />
+
+    <br>
+
+    <p>Пол: </p>
+    <p><input name="sex" type="radio" value="true"/>Мужской</p>
+    <p><input name="sex" type="radio" value="false"/>Женский</p>
+
+    <br>
+
+    <input type="submit" value="Добавить пользователя"/>
+</form>
+</body>
+</html>

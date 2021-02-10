@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>successPage</title>
+</head>
+<body>
+    <p>
+        Пользователь
+        <th:block th:text="${person.getName()}"></th:block>
+        добавлен в базу данных
+    </p>
+    <p>
+        <a href="/people/new">Добавить еще одного пользователя</a>
+        <br>
+        <a href="/people">К списку всех пользователей</a>
+        <br>
+        <a href="http://localhost:8080">На главную</a>
+    </p>
+</body>
+</html>

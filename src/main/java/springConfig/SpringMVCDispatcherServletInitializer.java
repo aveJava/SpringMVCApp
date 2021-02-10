@@ -23,15 +23,16 @@ public class SpringMVCDispatcherServletInitializer extends AbstractAnnotationCon
         return new String[] {"/"};
     }
 
-//    @Override   // для того, чтобы русские буквы в браузере нормально отображались
-//    protected Filter[] getServletFilters() {
-//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-//        characterEncodingFilter.setEncoding("UTF-8");
-//        characterEncodingFilter.setForceEncoding(true);
-//        return new Filter[] { characterEncodingFilter};
-//    }
+    @Override   // метод возвращающий все используемые фильтры (здесь можно создать свои фильтры)
+    protected Filter[] getServletFilters() {
+        // characterEncodingFilter - решает проблему с кодировкой текста созданного без использования шаблонизатора
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return new Filter[] { characterEncodingFilter};
+    }
 
-//    @Override
+//    @Override (тоже про кодировку)
 //    public void onStartup(ServletContext servletContext) throws ServletException {
 //        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 //        context.register(SpringConfig.class);       //, WebConfig.class

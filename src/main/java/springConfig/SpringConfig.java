@@ -32,7 +32,8 @@ public class SpringConfig implements WebMvcConfigurer {
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");  // папка, где будут лежать представления
         templateResolver.setSuffix(".html");            // расширение представлений
-        templateResolver.setCharacterEncoding("UTF-8"); // эта строка решила проблему с кодировкой !!!!!
+        // следующая строка решает проблему с кодировкой текста, создаваемого шаблонизатором
+        templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
 

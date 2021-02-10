@@ -1,11 +1,10 @@
 package controllers;
 
 import dao.PersonDAO;
+import models.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/people")
@@ -19,13 +18,34 @@ public class PeopleController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("people", personDAO.getPeople());
-        return "people1/index";
+        return "people/index";
     }
 
     @GetMapping("/{id}")
-    public String person(@PathVariable int id, Model model) {
+    public String show(@PathVariable int id, Model model) {
         model.addAttribute("person", personDAO.getPerson(id));
-        return "people1/person";
+        return "people/person";
     }
+
+    @GetMapping("/new")
+    public String newPerson() {
+        return "people/new";
+    }
+
+    @PostMapping
+    public String create(@ModelAttribute("person")Person person) {
+        personDAO.save(person);
+        return "people/successPage";
+    }
+
+//    @PostMapping  (альтернативный вариант записи метода create)
+//    public String create(@RequestParam(value = "name") String name,
+//                         @RequestParam(value = "age") int age,
+//                         @RequestParam(value = "sex") boolean sex,
+//                         Model model) {
+//        personDAO.addPerson(name, age, sex);
+//        model.addAttribute("name", name);
+//        return "people/successPage";
+//    }
 
 }
