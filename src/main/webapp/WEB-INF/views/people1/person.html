@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>person</title>
+</head>
+<body>
+    <h4> Это <th:blok th:text="${person.getName()}"></th:blok> </h4>
+    <p>
+        возраст:
+        <th:block th:text="${person.getAge()}"></th:block>
+    </p>
+    <p th:utext="${person.getSex()} ? boy : girl" />
+    <p></p>
+    <p><a href="/">На главную</a></p>
+</body>
+</html>

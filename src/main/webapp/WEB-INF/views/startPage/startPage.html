@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello!</title>   <!-- заголовок -->
+</head>
+
+<body>
+    <h1>Добро пожаловать!</h1>
+    <h1></h1>
+    <h4>Это мой первый проект. Здесь я учусь делать свои первые web-приложения.</h4>
+    <h4>Сейчас в моем проекте есть следующие контроллеры и страницы:</h4>
+    <br />
+    <h4>Контроллер StartPageController</h4>
+    <p style="margin-left: 50px;">Страница: <a href="http://localhost:8080">http://localhost:8080/</a></p>
+    <h4>Контроллер FirstController</h4>
+        <p style="margin-left: 50px;">Страница: <a href="http://localhost:8080/first/hello">http://localhost:8080/first/hello</a></p>
+        <p style="margin-left: 50px;">Страница: <a href="http://localhost:8080/first/hello?name=sir&surname=aveJava">http://localhost:8080/first/hello  (с параметрами)</a></p>
+        <p style="margin-left: 50px;">Страница: <a href="http://localhost:8080/first/goodbye">http://localhost:8080/first/goodbye</a></p>
+    <h4>Контроллер SecondController (в разработке)</h4>
+        <p style="margin-left: 50px;">Страница:   ...   ...   ...</p>
+    <h4>Контроллер PeopleController (вытаскивает людей из базы данных) </h4>
+    <p style="margin-left: 50px;">Страница: <a th:href="@{/people/}" th:text="Люди"></a></p>
+
+</body>
+</html>
