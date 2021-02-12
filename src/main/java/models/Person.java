@@ -1,14 +1,13 @@
 package models;
 
 public class Person {
-    private static int person_COUNT;   // счетчик для автоинкрементирования id
     private int id;
     private String name;
     private int age;
     boolean sex;
 
     public Person(String name, int age, boolean sex) {
-        this.id = ++person_COUNT;
+        this.id = 1;
         this.name = name;
         this.age = age;
         this.sex = sex;

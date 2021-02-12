@@ -11,7 +11,7 @@
     <th:block th:text="${person.getAge()}"></th:block>
 </p>
 <p th:utext="${person.getSex()} ? boy : girl" />
-<p></p>
+<p><a th:href="@{/people/{id}/edit (id=${person.getId()})}">Редактировать данные</a></p>
 <p><a href="/people">К списку людей</a></p>
 </body>
 </html>

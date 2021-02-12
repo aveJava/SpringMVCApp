@@ -7,15 +7,24 @@
 <body>
     <form th:method="PATCH" th:action="@{/people/{id} (id=${person.getId()})}" th:object=${person}>
         <label for="name">Enter name:</label>
-        <input name="name" type="text" id="name">
+        <input type="text" th:field="*{name}" id="name">
+
+
+        <br>
 
         <label for="age">Enter age:</label>
-        <input name="age" type="text" id="age">
+        <input type="text" th:field="*{age}" id="age">
 
-        <label for="sex">Enter sex:</label>
-        <input name="sex" type="text" id="sex">
+        <br>
 
-        <input type="submit" name="Обновить">
+        <p>Пол: </p>
+        <p><input name="sex" type="radio" value="true" th:checked="${person.getSex()}" />Мужской</p>
+        <p><input name="sex" type="radio" value="false" th:checked="${!person.getSex()}" />Женский</p>
+
+        <br>
+
+        <input type="submit" value="Обновить">  <a th:href="/people">Вернуться</a>
+
     </form>
 
 </body>

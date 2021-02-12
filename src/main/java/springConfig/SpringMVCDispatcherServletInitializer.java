@@ -2,6 +2,7 @@ package springConfig;
 
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -23,13 +24,39 @@ public class SpringMVCDispatcherServletInitializer extends AbstractAnnotationCon
         return new String[] {"/"};
     }
 
-    @Override   // метод возвращающий все используемые фильтры (здесь можно создать свои фильтры)
-    protected Filter[] getServletFilters() {
+//    @Override   // метод возвращающий все используемые фильтры (здесь можно создать свои фильтры)
+//    protected Filter[] getServletFilters() {
+//        // characterEncodingFilter - решает проблему с кодировкой текста созданного без использования шаблонизатора
+//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+//        characterEncodingFilter.setEncoding("UTF-8");
+//        characterEncodingFilter.setForceEncoding(true);
+//        return new Filter[] { characterEncodingFilter};
+//    }
+
+    // для чтения скрытого поля _method и поддержки PATCH, DELETE и прочих типов запросов
+    @Override
+    public void onStartup(ServletContext aServletContext) throws ServletException {
+        super.onStartup(aServletContext);
+        registerHiddenFieldFilter(aServletContext);
+        registerCharacterEncodingFilter(aServletContext);
+    }
+
+    private void registerHiddenFieldFilter(ServletContext aContext) {
+        aContext.addFilter("hiddenHttpMethodFilter",
+                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
+    }
+
+    private void registerCharacterEncodingFilter(ServletContext aContext) {
         // characterEncodingFilter - решает проблему с кодировкой текста созданного без использования шаблонизатора
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
-        return new Filter[] { characterEncodingFilter};
+
+        FilterRegistration.Dynamic filterRegistration = aContext
+                .addFilter("characterEncodingFilter", characterEncodingFilter);
+        filterRegistration.addMappingForUrlPatterns(null, false, "/*");
+
+//        aContext.addFilter("characterEncodingFilter", characterEncodingFilter);
     }
 
 //    @Override (тоже про кодировку)

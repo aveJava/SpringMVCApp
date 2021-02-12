@@ -38,7 +38,7 @@ public class PeopleController {
         return "people/successPage";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.getPerson(id));
         return "people/edit";
