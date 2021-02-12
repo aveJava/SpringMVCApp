@@ -40,7 +40,7 @@ public class PeopleController {
 
     @GetMapping("/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
-        model.addAttribute(personDAO.getPerson(id));
+        model.addAttribute("person", personDAO.getPerson(id));
         return "people/edit";
     }
 
