@@ -44,6 +44,12 @@ public class PeopleController {
         return "people/edit";
     }
 
+    @PatchMapping("/{id}")
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
+        personDAO.update(id, person);
+        return "redirect:/people";
+    }
+
 //    @PostMapping  (альтернативный вариант записи метода create)
 //    public String create(@RequestParam(value = "name") String name,
 //                         @RequestParam(value = "age") int age,

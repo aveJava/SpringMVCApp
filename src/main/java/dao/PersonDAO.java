@@ -30,4 +30,11 @@ public class PersonDAO {
     public void save(Person person) {
         people.add(person);
     }
+
+    public void update(int id, Person person) {
+        Person oldPerson = getPerson(id);
+        oldPerson.setName(person.getName());
+        oldPerson.setAge(person.getAge());
+        oldPerson.setSex(person.getSex());
+    }
 }
