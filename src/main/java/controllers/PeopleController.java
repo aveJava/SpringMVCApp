@@ -38,6 +38,12 @@ public class PeopleController {
         return "people/successPage";
     }
 
+    @GetMapping("/{id}")
+    public String edit(@PathVariable("id") int id, Model model) {
+        model.addAttribute(personDAO.getPerson(id));
+        return "people/edit";
+    }
+
 //    @PostMapping  (альтернативный вариант записи метода create)
 //    public String create(@RequestParam(value = "name") String name,
 //                         @RequestParam(value = "age") int age,
