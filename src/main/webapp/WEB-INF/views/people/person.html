@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>person</title>
@@ -7,11 +7,19 @@
 <body>
 <h4>Это страница <th:blok th:text="${person.getName()}"></th:blok> </h4>
 <p>
-    возраст:
-    <th:block th:text="${person.getAge()}"></th:block>
+    <th:block th:text="${'id: ' + person.getId()}" />
 </p>
-<p th:utext="${person.getSex()} ? boy : girl" />
+<p>
+    <th:block th:text="${'возраст: ' + person.getAge()}"></th:block>
+</p>
+<p>
+    пол: <th:block th:utext="${person.getSex()} ? boy : girl"/>
+</p>
+    <br>
 <p><a th:href="@{/people/{id}/edit (id=${person.getId()})}">Редактировать данные</a></p>
+
+
+
 <p><a href="/people">К списку людей</a></p>
 </body>
 </html>
