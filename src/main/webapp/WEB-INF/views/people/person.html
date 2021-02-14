@@ -5,21 +5,25 @@
     <title>person</title>
 </head>
 <body>
-<h4>Это страница <th:blok th:text="${person.getName()}"></th:blok> </h4>
-<p>
-    <th:block th:text="${'id: ' + person.getId()}" />
-</p>
-<p>
-    <th:block th:text="${'возраст: ' + person.getAge()}"></th:block>
-</p>
-<p>
-    пол: <th:block th:utext="${person.getSex()} ? boy : girl"/>
-</p>
-    <br>
-<p><a th:href="@{/people/{id}/edit (id=${person.getId()})}">Редактировать данные</a></p>
+    <h4>Это страница <th:blok th:text="${person.getName()}"></th:blok> </h4>
+    <p>
+        <th:block th:text="${'id: ' + person.getId()}" />
+    </p>
+    <p>
+        <th:block th:text="${'возраст: ' + person.getAge()}"></th:block>
+    </p>
+    <p>
+        пол: <th:block th:utext="${person.getSex()} ? boy : girl"/>
+    </p>
+        <br>
+    <p><a th:href="@{/people/{id}/edit (id=${person.getId()})}">Редактировать данные</a></p>
 
+    <form th:method="DELETE" th:action="@{/people/{id} (id=${person.getId()})}">
+        <input type="submit" value="Удалить этого человека">
+    </form>
 
-
-<p><a href="/people">К списку людей</a></p>
+    <form method="get" action="/people">
+        <input type="submit" value="К списку всех людей">
+    </form>
 </body>
 </html>

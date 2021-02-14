@@ -10,12 +10,16 @@
         <th:block th:text="${person.getName()}"></th:block>
         добавлен в базу данных
     </p>
-    <p>
-        <a href="/people/new">Добавить еще одного пользователя</a>
-        <br>
-        <a href="/people">К списку всех пользователей</a>
-        <br>
-        <a href="http://localhost:8080">На главную</a>
-    </p>
+
+    <br>
+
+    <form method="get" action="/people/new">
+        <input type="submit" value="Добавить еще одного пользователя">
+    </form>
+
+    <form method="get" action="/people">
+        <input type="submit" value="К списку всех пользователей">
+    </form>
+
 </body>
 </html>

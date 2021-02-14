@@ -20,8 +20,10 @@ public class PersonDAO {
         save(new Person("Amelia", 21, false));
     }
 
+    // возвращает порядковый номер пользователя в листе people по id пользователя
+
     public Person getPerson(int id) {
-        return people.get(id - 1);
+        return people.get(id);
     }
 
     public List<Person> getPeople() {
@@ -29,7 +31,7 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        person.setId(++person_COUNT);
+        person.setId(person_COUNT++);
         people.add(person);
     }
 
@@ -38,5 +40,9 @@ public class PersonDAO {
         person.setName(updatePerson.getName());
         person.setAge(updatePerson.getAge());
         person.setSex(updatePerson.getSex());
+    }
+
+    public void delete(int id) {
+        people.removeIf(person -> person.getId() == id);
     }
 }
