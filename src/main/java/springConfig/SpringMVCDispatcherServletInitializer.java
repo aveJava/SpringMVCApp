@@ -33,21 +33,22 @@ public class SpringMVCDispatcherServletInitializer extends AbstractAnnotationCon
 //        return new Filter[] { characterEncodingFilter};
 //    }
 
-    // для чтения скрытого поля _method и поддержки PATCH, DELETE и прочих типов запросов
+    // данный метод запускается при запуске Spring-приложения (то, что нужно сделать при запуске)
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
-        registerHiddenFieldFilter(aServletContext);
-        registerCharacterEncodingFilter(aServletContext);
+        registerHiddenFieldFilter(aServletContext);         // регистрируем фильтр скрытых полей
+        registerCharacterEncodingFilter(aServletContext);   // регистрируем фильтр кодировки
     }
 
+    // для чтения скрытого поля _method и поддержки PATCH, DELETE и прочих типов запросов
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
 
+    // characterEncodingFilter - решает проблему с кодировкой текста созданного без использования шаблонизатора
     private void registerCharacterEncodingFilter(ServletContext aContext) {
-        // characterEncodingFilter - решает проблему с кодировкой текста созданного без использования шаблонизатора
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
@@ -55,8 +56,6 @@ public class SpringMVCDispatcherServletInitializer extends AbstractAnnotationCon
         FilterRegistration.Dynamic filterRegistration = aContext
                 .addFilter("characterEncodingFilter", characterEncodingFilter);
         filterRegistration.addMappingForUrlPatterns(null, false, "/*");
-
-//        aContext.addFilter("characterEncodingFilter", characterEncodingFilter);
     }
 
 //    @Override (тоже про кодировку)
