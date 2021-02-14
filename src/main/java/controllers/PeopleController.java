@@ -45,8 +45,9 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
-        personDAO.update(id, person);
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") Person newPerson) {
+        Person personToUpdate = personDAO.getPerson(id);
+        personDAO.update(personToUpdate, newPerson);
         String redirect = "redirect:/people/" +id;
         return redirect;
     }
@@ -61,6 +62,13 @@ public class PeopleController {
     public String order(){
         personDAO.order();
         return "redirect:/people";
+    }
+
+    @GetMapping("/exception")
+    public String exception(Model model) {
+        String ex = "нет такого человека";
+        model.addAttribute("message", ex);
+        return "people/exception";
     }
 
 //    @PostMapping  (альтернативный вариант записи метода create)

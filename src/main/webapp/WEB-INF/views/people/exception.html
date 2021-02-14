@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>exception</title>
+</head>
+<body>
+    <h1>Что-то пошло не так...</h1>
+    <br>
+    <p style="margin-left: 50px;">Ошибка на контроллере PeopleController:</p>
+    <p th:text="${message}" style="margin-left: 50px;"></p>
+    <br>
+    <p style="margin-left: 50px;"><a href="http://localhost:8080/">На главную страницу</a></p>
+</body>
+</html>

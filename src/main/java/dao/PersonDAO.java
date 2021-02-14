@@ -1,6 +1,8 @@
 package dao;
 
+import controllers.PeopleController;
 import models.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -25,7 +27,10 @@ public class PersonDAO {
     // возвращает порядковый номер пользователя в листе people по id пользователя
 
     public Person getPerson(int id) {
-        return people.get(id);
+        for (Person person : people) {
+            if (person.getId() == id) return person;
+        }
+        return null;
     }
 
     public List<Person> getPeople() {
@@ -33,15 +38,14 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        person.setId(person_COUNT++);
+        person.setId(++person_COUNT);
         people.add(person);
     }
 
-    public void update(int id, Person updatePerson) {
-        Person person = getPerson(id);
-        person.setName(updatePerson.getName());
-        person.setAge(updatePerson.getAge());
-        person.setSex(updatePerson.getSex());
+    public void update(Person personToUpdate, Person newPerson) {
+        personToUpdate.setName(newPerson.getName());
+        personToUpdate.setAge(newPerson.getAge());
+        personToUpdate.setSex(newPerson.getSex());
     }
 
     public void delete(int id) {
@@ -60,5 +64,7 @@ public class PersonDAO {
         for (Person person : people){
             person.setId(i++);
         }
+
+        person_COUNT = people.size() - 1;
     }
 }
