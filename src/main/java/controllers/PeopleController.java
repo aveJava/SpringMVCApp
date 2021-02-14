@@ -57,6 +57,12 @@ public class PeopleController {
         return "redirect:/people";
     }
 
+    @PostMapping("/order")
+    public String order(){
+        personDAO.order();
+        return "redirect:/people";
+    }
+
 //    @PostMapping  (альтернативный вариант записи метода create)
 //    public String create(@RequestParam(value = "name") String name,
 //                         @RequestParam(value = "age") int age,

@@ -12,9 +12,15 @@
        th:text="${person.getName()}">person</a>
 </div>
 <br>
-    <p>
-        <a href="/people/new">Добавить пользователя</a>
-    </p>
+
+<form method="get" action="/people/new">
+    <input type="submit" value="Добавить пользователя">
+</form>
+
+<form method="post" action="/people/order">
+    <input type="submit" value="Упорядочить пользователей">
+</form>
+
 <p><a href="/">На главную</a></p>
 </body>
 </html>

@@ -4,6 +4,8 @@ import models.Person;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Component
@@ -44,5 +46,19 @@ public class PersonDAO {
 
     public void delete(int id) {
         people.removeIf(person -> person.getId() == id);
+    }
+
+    public void order(){
+        Collections.sort(people, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getId() - o2.getId();
+            }
+        });
+
+        int i = 1;
+        for (Person person : people){
+            person.setId(i++);
+        }
     }
 }
