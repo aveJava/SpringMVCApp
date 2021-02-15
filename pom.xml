@@ -63,6 +63,11 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>  <!--  для валидации моделей -->
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.17.Final</version>
+    </dependency>
   </dependencies>
 
   <build>
