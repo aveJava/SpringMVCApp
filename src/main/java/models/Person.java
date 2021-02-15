@@ -1,9 +1,6 @@
 package models;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class Person {
 //    @NotEmpty(message = "Это поле не должно быть пустым")
@@ -17,6 +14,7 @@ public class Person {
     @Max(value = 250, message = "Возраст не должен быть больше 250")
     private int age;
 
+    @NotNull(message = "Выберите пол")
     boolean sex;
 
     // без этого конструктора аннотация @ModelAttribute может создать объект Person только если введены все параметры

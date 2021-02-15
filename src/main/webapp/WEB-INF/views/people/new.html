@@ -8,12 +8,13 @@
 <form method="POST" action="/people" th:object="${person}">
     <label for="name">Имя: </label>
     <input name="name" type="text" id="name" />
-    <div style="color: dodgerblue" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <div style="color: dodgerblue" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
 
     <br>
 
     <label for="age">Возраст: </label>
     <input name="age" type="text" id="age" />
+    <div style="color: dodgerblue" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"/>
 
     <br>
 
