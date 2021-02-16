@@ -45,6 +45,16 @@
       <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency> <!-- для jdbc-template -->
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
     <!-- будет использоваться классом AbstractAnnotationConfigDispatcherServletInitializer -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -63,10 +73,15 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <dependency>  <!--  для валидации моделей -->
+    <dependency>  <!-- для валидации моделей -->
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
       <version>6.0.17.Final</version>
+    </dependency>
+    <dependency>  <!-- JDBC для Postgres -->
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.18</version>
     </dependency>
   </dependencies>
 
